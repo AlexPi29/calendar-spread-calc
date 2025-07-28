@@ -89,8 +89,8 @@ export function useBinanceData() {
       setSpreadData(mockData)
       setLastUpdate(new Date())
     } catch (err) {
-      setError('Failed to fetch market data')
-      console.error('Data fetch error:', err)
+      setError('Не удалось получить рыночные данные')
+      console.error('Ошибка получения данных:', err)
     } finally {
       setLoading(false)
     }
@@ -99,7 +99,7 @@ export function useBinanceData() {
   useEffect(() => {
     fetchBinanceData()
     
-    // Update every 30 seconds
+    // Обновление каждые 30 секунд
     const interval = setInterval(fetchBinanceData, 30000)
     
     return () => clearInterval(interval)

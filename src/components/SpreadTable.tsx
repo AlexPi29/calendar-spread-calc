@@ -31,14 +31,14 @@ export function SpreadTable() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold">📱 Calendar Spread Calculator</h1>
-            <p className="text-muted-foreground">Real profitability with all costs included</p>
+            <h1 className="text-3xl font-bold">📱 Калькулятор Календарных Спредов</h1>
+            <p className="text-muted-foreground">Реальная доходность с учётом всех затрат</p>
           </div>
           
           <div className="flex items-center gap-2">
             {lastUpdate && (
               <span className="text-sm text-muted-foreground">
-                Updated: {lastUpdate.toLocaleTimeString()}
+                Обновлено: {lastUpdate.toLocaleTimeString()}
               </span>
             )}
             <Button variant="outline" size="sm" onClick={refetch} disabled={loading}>
@@ -55,7 +55,7 @@ export function SpreadTable() {
           <CardContent className="p-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex items-center gap-2">
-                <label className="text-sm font-medium">Capital:</label>
+                <label className="text-sm font-medium">Капитал:</label>
                 <div className="flex items-center gap-1">
                   <span className="font-mono text-lg font-semibold">
                     {formatCurrency(settings.capital)}
@@ -65,15 +65,15 @@ export function SpreadTable() {
               </div>
               
               <div className="flex items-center gap-2">
-                <label className="text-sm font-medium">Show:</label>
+                <label className="text-sm font-medium">Показать:</label>
                 <select 
                   value={displayCount} 
                   onChange={(e) => setDisplayCount(Number(e.target.value))}
                   className="px-2 py-1 rounded border bg-background text-sm"
                 >
-                  <option value={10}>10 coins</option>
-                  <option value={20}>20 coins</option>
-                  <option value={50}>All coins</option>
+                  <option value={10}>10 монет</option>
+                  <option value={20}>20 монет</option>
+                  <option value={50}>Все монеты</option>
                 </select>
               </div>
             </div>
@@ -86,7 +86,7 @@ export function SpreadTable() {
             <CardContent className="p-4">
               <p className="text-destructive">{error}</p>
               <Button variant="outline" size="sm" onClick={refetch} className="mt-2">
-                Try Again
+                Попробовать снова
               </Button>
             </CardContent>
           </Card>
@@ -96,9 +96,9 @@ export function SpreadTable() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              📊 Live Calendar Spreads
+              📊 Календарные Спреды в Реальном Времени
               <Badge variant="secondary" className="font-mono">
-                {calculatedSpreads.length} opportunities
+                {calculatedSpreads.length} возможностей
               </Badge>
             </CardTitle>
           </CardHeader>
@@ -107,14 +107,14 @@ export function SpreadTable() {
               <table className="w-full">
                 <thead className="border-b bg-muted/50">
                   <tr>
-                    <th className="text-left p-4 font-medium">Coin</th>
-                    <th className="text-right p-4 font-medium">Spot Price</th>
-                    <th className="text-right p-4 font-medium">Future Price</th>
-                    <th className="text-right p-4 font-medium">Days</th>
-                    <th className="text-right p-4 font-medium">Theor APR</th>
-                    <th className="text-right p-4 font-medium">Real APR</th>
-                    <th className="text-right p-4 font-medium">Real Profit</th>
-                    <th className="text-center p-4 font-medium">Action</th>
+                    <th className="text-left p-4 font-medium">Монета</th>
+                    <th className="text-right p-4 font-medium">Спот Цена</th>
+                    <th className="text-right p-4 font-medium">Фьючерс Цена</th>
+                    <th className="text-right p-4 font-medium">Дней</th>
+                    <th className="text-right p-4 font-medium">Теор APR</th>
+                    <th className="text-right p-4 font-medium">Реал APR</th>
+                    <th className="text-right p-4 font-medium">Реал Прибыль</th>
+                    <th className="text-center p-4 font-medium">Действие</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -193,7 +193,7 @@ export function SpreadTable() {
               <div className="font-mono text-2xl font-bold text-success">
                 {calculatedSpreads.filter(s => s.realAPR >= 10).length}
               </div>
-              <div className="text-sm text-muted-foreground">High Profit (≥10%)</div>
+              <div className="text-sm text-muted-foreground">Высокая Прибыль (≥10%)</div>
             </CardContent>
           </Card>
           
@@ -202,7 +202,7 @@ export function SpreadTable() {
               <div className="font-mono text-2xl font-bold text-warning">
                 {calculatedSpreads.filter(s => s.realAPR >= 5 && s.realAPR < 10).length}
               </div>
-              <div className="text-sm text-muted-foreground">Medium Profit (5-10%)</div>
+              <div className="text-sm text-muted-foreground">Средняя Прибыль (5-10%)</div>
             </CardContent>
           </Card>
           
@@ -211,7 +211,7 @@ export function SpreadTable() {
               <div className="font-mono text-2xl font-bold text-danger">
                 {calculatedSpreads.filter(s => s.realAPR < 5).length}
               </div>
-              <div className="text-sm text-muted-foreground">Low Profit (&lt;5%)</div>
+              <div className="text-sm text-muted-foreground">Низкая Прибыль (&lt;5%)</div>
             </CardContent>
           </Card>
           
@@ -223,7 +223,7 @@ export function SpreadTable() {
                   '0%'
                 }
               </div>
-              <div className="text-sm text-muted-foreground">Average APR</div>
+              <div className="text-sm text-muted-foreground">Средний APR</div>
             </CardContent>
           </Card>
         </div>
