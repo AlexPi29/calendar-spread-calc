@@ -211,7 +211,7 @@ export function SpreadTable() {
               <div className="font-mono text-2xl font-bold text-danger">
                 {calculatedSpreads.filter(s => s.realAPR < 5).length}
               </div>
-              <div className="text-sm text-muted-foreground">Low Profit (<5%)</div>
+              <div className="text-sm text-muted-foreground">Low Profit (&lt;5%)</div>
             </CardContent>
           </Card>
           
