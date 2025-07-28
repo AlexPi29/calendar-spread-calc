@@ -1,5 +1,13 @@
+import { SpreadTable } from './components/SpreadTable'
+import { Toaster } from '@/components/ui/sonner'
+
 function App() {
-    return <div></div>
+    return (
+        <>
+            <SpreadTable />
+            <Toaster />
+        </>
+    )
 }
 
 export default App
