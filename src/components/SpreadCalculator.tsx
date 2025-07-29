@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { ArrowLeft, TrendingUp, Calculator, DollarSign, Clock } from '@phosphor-icons/react'
+import { ArrowLeft, Calculator, DollarSign, Clock } from '@phosphor-icons/react'
 import { formatCurrency, formatPercent, formatPrice, getAPRColor } from '@/hooks/useSpreadCalculations'
 
 interface SpreadCalculatorProps {
@@ -41,7 +41,7 @@ export function SpreadCalculator({ spread, onBack }: SpreadCalculatorProps) {
 
           <Card>
             <CardContent className="p-4 text-center">
-              <TrendingUp className="w-8 h-8 mx-auto mb-2 text-primary" />
+              <span className="w-8 h-8 mx-auto mb-2 text-primary text-2xl">📈</span>
               <div className="font-mono text-xl font-bold">
                 {formatPrice(spread.futurePrice)}
               </div>

@@ -1,12 +1,10 @@
 import { SpreadTable } from './components/SpreadTable'
-import { Toaster } from '@/components/ui/sonner'
 
 function App() {
     return (
-        <>
+        <div className="min-h-screen">
             <SpreadTable />
-            <Toaster />
-        </>
+        </div>
     )
 }
 

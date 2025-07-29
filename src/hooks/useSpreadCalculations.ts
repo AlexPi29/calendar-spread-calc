@@ -50,9 +50,15 @@ const DEFAULT_SETTINGS: TradingSettings = {
 export function useSpreadCalculations(spreadData: SpreadData[]) {
   const [settings] = useKV<TradingSettings>('trading-settings', DEFAULT_SETTINGS)
   
+  // Ensure spreadData is always an array
+  const safeSpreadData = spreadData || []
+  
   const calculatedSpreads = useMemo(() => {
-    return spreadData.map(spread => {
-      const { capital, spotCommission, futureCommission, bidAskSpread, fundingRate, usdtStakingRate } = settings
+    // Ensure settings exists and has all required properties
+    const safeSettings = settings || DEFAULT_SETTINGS
+    
+    return safeSpreadData.map(spread => {
+      const { capital, spotCommission, futureCommission, bidAskSpread, fundingRate, usdtStakingRate } = safeSettings
       
       // Calculate position size (use 80% of capital for position, 20% for margin)
       const positionValue = capital * 0.8
@@ -107,11 +113,11 @@ export function useSpreadCalculations(spreadData: SpreadData[]) {
       } as CalculatedSpread
     })
     .sort((a, b) => b.realAPR - a.realAPR) // Sort by real APR descending
-  }, [spreadData, settings])
+  }, [safeSpreadData, settings])
   
   return {
     calculatedSpreads,
-    settings
+    settings: settings || DEFAULT_SETTINGS
   }
 }
 
